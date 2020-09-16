@@ -14,6 +14,17 @@ exports.fetchUser = async (userId, next) => {
   }
 };
 
+exports.userList = async (req, res, next) => {
+  try {
+    const users = await User.findAll({
+      attributes: { exclude: ["password", "createdAt", "updatedAt"] },
+    });
+
+    res.json(users);
+  } catch (error) {
+    next(error);
+  }
+};
 exports.signup = async (req, res, next) => {
   const { password } = req.body;
 
@@ -81,6 +92,7 @@ exports.deleteUser = async (req, res, next) => {
 exports.folderCreate = async (req, res, next) => {
   try {
     req.body.userId = req.user.id;
+    console.log("req.body", req.body);
     const newFolder = await Folder.create(req.body);
     res.status(201).json(newFolder);
   } catch (error) {

@@ -18,7 +18,6 @@ exports.receiptList = async (req, res, next) => {
       include: {
         model: Folder,
         as: "folder",
-        attributes: ["name"],
       },
     });
     res.json(receipt);
