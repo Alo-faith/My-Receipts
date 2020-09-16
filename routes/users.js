@@ -7,7 +7,7 @@ const passport = require("passport");
 const {
   signup,
   signin,
-  //   userList,
+  userList,
   userUpdate,
   deleteUser,
   fetchUser,
@@ -27,8 +27,8 @@ router.param("userId", async (req, res, next, userId) => {
   }
 });
 
-// // User list
-// router.get("/", userList);
+// User list
+router.get("/", userList);
 
 // Signup
 router.post("/signup", signup);
