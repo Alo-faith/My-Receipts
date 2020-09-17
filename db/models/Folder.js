@@ -8,7 +8,7 @@ Folder.init(
     name: {
       type: DataTypes.STRING,
     },
-
+    // REVIEW: What's the purpose of this field?
     defaultFolder: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,

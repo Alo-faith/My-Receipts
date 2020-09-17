@@ -13,6 +13,7 @@ Receipt.init(
       type: DataTypes.DATEONLY,
       // allowNull: false,
     },
+    // REVIEW: field names start with lowercase (use camelCase)
     Expdate: {
       type: DataTypes.DATEONLY,
       // allowNull: false,

@@ -43,6 +43,7 @@ exports.signup = async (req, res, next) => {
     };
     const token = jwt.sign(JSON.stringify(payload), JWT_SECRET);
 
+    /// REVIEW: Is this folder supposed to be part of the token? It's not used
     const defultFolder = await Folder.create({
       userId: payload.id,
       name: "Folder",

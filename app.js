@@ -49,7 +49,7 @@ const run = async () => {
   } catch (error) {
     console.error("Error connecting to the database: ", error);
   }
-
+  // REVIEW: You defined PORT but didnt use it
   const PORT = process.env.PORT || 8000;
   app.listen(8000, () => {
     console.log("The application is running on localhost:8000");

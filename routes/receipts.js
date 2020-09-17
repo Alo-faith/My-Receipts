@@ -21,7 +21,8 @@ router.param("receiptId", async (req, res, next, receiptId) => {
     next(error);
   }
 });
-
+// REVIEW: put spaces between routes
+// REVIEW: why doesn't the `put` have a jwt strategy
 router.get("/", receiptList);
 router.put("/:receiptId", upload.single("image"), receiptUpdate);
 router.delete(

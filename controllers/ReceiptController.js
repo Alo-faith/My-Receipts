@@ -29,6 +29,7 @@ exports.receiptList = async (req, res, next) => {
 exports.receiptUpdate = async (req, res, next) => {
   try {
     if (req.file) {
+      // REVIEW: The code here is incomplete
       req.body.image = `${process.env.PORT}:${req.get("host")}/media/${
         req.file.filename
       }`;
