@@ -6,7 +6,7 @@ const db = process.env.DATABASE_URL
     })
   : new Sequelize({
       username: "postgres",
-      password: "ilovecoded",
+      password: "",
       database: "MyReceipts_db",
       dialect: "postgres",
       host: "localhost",
