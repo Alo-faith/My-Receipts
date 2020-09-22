@@ -25,6 +25,7 @@ exports.userList = async (req, res, next) => {
     next(error);
   }
 };
+
 exports.signup = async (req, res, next) => {
   const { password } = req.body;
 
@@ -43,6 +44,9 @@ exports.signup = async (req, res, next) => {
     };
     const token = jwt.sign(JSON.stringify(payload), JWT_SECRET);
 
+    // const not being used, remove it
+    // change default name to something else, calling it "Folder" is very confusing
+    // maybe like "Your Receipts" or something friendly and not technical like that
     const defultFolder = await Folder.create({
       userId: payload.id,
       name: "Folder",
@@ -92,7 +96,7 @@ exports.deleteUser = async (req, res, next) => {
 exports.folderCreate = async (req, res, next) => {
   try {
     req.body.userId = req.user.id;
-    console.log("req.body", req.body);
+    console.log("req.body", req.body); // remove console log before pushing
     const newFolder = await Folder.create(req.body);
     res.status(201).json(newFolder);
   } catch (error) {

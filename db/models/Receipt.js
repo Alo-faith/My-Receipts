@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require("sequelize");
 const db = require("../db");
 
-class Receipt extends Model {}
+class Receipt extends Model { }
 
 Receipt.init(
   {
@@ -13,6 +13,8 @@ Receipt.init(
       type: DataTypes.DATEONLY,
       // allowNull: false,
     },
+
+    // use camelCase for naming
     Expdate: {
       type: DataTypes.DATEONLY,
       // allowNull: false,

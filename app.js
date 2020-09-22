@@ -28,7 +28,7 @@ passport.use(jwtStrategy);
 
 app.use(userRoutes);
 app.use("/folder", folderRoutes);
-app.use("/receipt", receiptRoutes);
+app.use("/receipt", receiptRoutes); // receipts, make it plural not singular
 
 // Not found path
 app.use((req, res, next) => {

@@ -37,7 +37,7 @@ router.delete(
 );
 
 router.post(
-  "/:folderId/receipt",
+  "/:folderId/receipt", // should be receipts, plural not singular
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
   receiptCreate
