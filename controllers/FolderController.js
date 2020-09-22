@@ -14,6 +14,7 @@ exports.fetchFolder = async (folderId, next) => {
 
 exports.folderList = async (req, res, next) => {
   try {
+    // folderSSSSSSSSSSS
     const folder = await Folder.findAll({
       attributes: { exclude: ["createdAt", "updatedAt"] },
       include: {
@@ -58,13 +59,11 @@ exports.folderDelete = async (req, res, next) => {
   }
 };
 
-//  create receipt
+// create receipt
 exports.receiptCreate = async (req, res, next) => {
   try {
     if (req.file) {
-      req.body.image = `${req.protocol ? "https" : "http"}:${req.get(
-        "host"
-      )}/media/${req.file.filename}`;
+      req.body.image = `${req.protocol ? "https" : "http"}:${req.get("host")}/media/${req.file.filename}`;
     }
     req.body.folderId = req.folder.id;
     const newReceipt = await Receipt.create(req.body);

@@ -14,7 +14,7 @@ exports.fetchReceipt = async (receiptId, next) => {
 exports.receiptList = async (req, res, next) => {
   try {
     const receipt = await Receipt.findAll({
-      // attributes: { exclude: ["folderId", "createdAt", "updatedAt"] },
+      // attributes: { exclude: ["folderId", "createdAt", "updatedAt"] }, if not being used remove it
       include: {
         model: Folder,
         as: "folder",
@@ -29,9 +29,7 @@ exports.receiptList = async (req, res, next) => {
 exports.receiptUpdate = async (req, res, next) => {
   try {
     if (req.file) {
-      req.body.image = `${process.env.PORT}:${req.get("host")}/media/${
-        req.file.filename
-      }`;
+      req.body.image = `${process.env.PORT}:${req.get("host")}/media/${req.file.filename}`;
     }
 
     //   if (req.file) {

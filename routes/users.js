@@ -27,6 +27,7 @@ router.param("userId", async (req, res, next, userId) => {
   }
 });
 
+// clarify here that this is used for testing only
 // User list
 router.get("/", userList);
 
@@ -39,6 +40,8 @@ router.post(
   passport.authenticate("local", { session: false }),
   signin
 );
+
+// I'd clarify that it's used for testing purposes only.
 // Delete user used only in BE
 router.delete(
   "/",
@@ -51,7 +54,7 @@ router.put("/", passport.authenticate("jwt", { session: false }), userUpdate);
 
 // create Folder
 router.post(
-  "/folder",
+  "/folder", // again, make plural not singular
   passport.authenticate("jwt", { session: false }),
   folderCreate
 );
