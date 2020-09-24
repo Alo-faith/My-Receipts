@@ -11,8 +11,9 @@ const {
   userUpdate,
   deleteUser,
   fetchUser,
-  folderCreate,
-} = require("../controllers/UserController");
+
+} = require("../controllers/userController");
+
 
 router.param("userId", async (req, res, next, userId) => {
   const user = await fetchUser(userId, next);
@@ -49,10 +50,4 @@ router.delete(
 // Update user profile
 router.put("/", passport.authenticate("jwt", { session: false }), userUpdate);
 
-// create Folder
-router.post(
-  "/folder",
-  passport.authenticate("jwt", { session: false }),
-  folderCreate
-);
 module.exports = router;

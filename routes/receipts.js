@@ -26,7 +26,7 @@ router.get("/", receiptList);
 router.put("/:receiptId", upload.single("image"), receiptUpdate);
 router.delete(
   "/:receiptId",
-  passport.authenticate("jwt", { session: false }),
+  // passport.authenticate("jwt", { session: false }),
   receiptDelete
 );
 

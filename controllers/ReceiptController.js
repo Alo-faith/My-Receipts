@@ -13,13 +13,17 @@ exports.fetchReceipt = async (receiptId, next) => {
 
 exports.receiptList = async (req, res, next) => {
   try {
+
     const receipt = await Receipt.findAll({
-      // attributes: { exclude: ["folderId", "createdAt", "updatedAt"] },
+      attributes: { exclude: ["folderId", "createdAt", "updatedAt"] },
+
       include: {
         model: Folder,
         as: "folder",
       },
+      // where: { folderId: req.user.id },
     });
+
     res.json(receipt);
   } catch (error) {
     next(error);
@@ -39,7 +43,6 @@ exports.receiptUpdate = async (req, res, next) => {
     //       req.file.filename
     //     };
 
-    // ${req.protocol}
     await req.receipt.update(req.body);
     res.status(204).end();
   } catch (error) {
