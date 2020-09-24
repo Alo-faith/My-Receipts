@@ -33,9 +33,9 @@ exports.receiptList = async (req, res, next) => {
 exports.receiptUpdate = async (req, res, next) => {
   try {
     if (req.file) {
-      req.body.image = `${process.env.PORT}:${req.get("host")}/media/${
-        req.file.filename
-      }`;
+      req.body.image = `${process.env.PORT ? "https" : "http"}:${req.get(
+        "host"
+      )}/media/${req.file.filename}`;
     }
 
     //   if (req.file) {
