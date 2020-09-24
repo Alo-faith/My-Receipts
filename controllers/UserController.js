@@ -43,13 +43,13 @@ exports.signup = async (req, res, next) => {
     };
     const token = jwt.sign(JSON.stringify(payload), JWT_SECRET);
 
-    const defultFolder = await Folder.create({
+    const defaultFolder = await Folder.create({
       userId: payload.id,
-      name: "Folder",
+      name: "Your Receipts",
       defaultFolder: true,
     });
 
-    res.status(201).json({ token });
+    res.status(201).json({ token, defaultFolder });
   } catch (error) {
     next(error);
   }
@@ -64,6 +64,7 @@ exports.signin = async (req, res, next) => {
     email: user.email,
     firstName: user.firstName,
     lastName: user.lastName,
+    exp: Date.now() + JWT_EXPIRATION_MS,
   };
   const token = jwt.sign(JSON.stringify(payload), JWT_SECRET);
   res.json({ token });
@@ -84,17 +85,6 @@ exports.deleteUser = async (req, res, next) => {
   try {
     await req.user.destroy();
     res.status(204).end();
-  } catch (error) {
-    next(error);
-  }
-};
-// Create  folder
-exports.folderCreate = async (req, res, next) => {
-  try {
-    req.body.userId = req.user.id;
-    console.log("req.body", req.body);
-    const newFolder = await Folder.create(req.body);
-    res.status(201).json(newFolder);
   } catch (error) {
     next(error);
   }

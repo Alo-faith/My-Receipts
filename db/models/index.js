@@ -9,8 +9,12 @@ Folder.hasMany(Receipt, {
   as: "receipt",
   foreignKey: "folderId",
   allowNull: false,
+  onDelete: "CASCADE",
 });
-Receipt.belongsTo(Folder, { as: "folder" });
+Receipt.belongsTo(Folder, {
+  as: "folder",
+  foreignKey: "folderId",
+});
 
 module.exports = {
   User,

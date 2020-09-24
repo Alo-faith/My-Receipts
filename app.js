@@ -27,8 +27,8 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 app.use(userRoutes);
-app.use("/folder", folderRoutes);
-app.use("/receipt", receiptRoutes);
+app.use("/folders", folderRoutes);
+app.use("/receipts", receiptRoutes);
 
 // Not found path
 app.use((req, res, next) => {
