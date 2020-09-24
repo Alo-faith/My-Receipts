@@ -8,13 +8,15 @@ Folder.init(
     name: {
       type: DataTypes.STRING,
     },
-
+    pin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     defaultFolder: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
   },
-
   {
     sequelize: db,
   }

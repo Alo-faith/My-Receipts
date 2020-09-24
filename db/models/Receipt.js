@@ -13,7 +13,7 @@ Receipt.init(
       type: DataTypes.DATEONLY,
       // allowNull: false,
     },
-    Expdate: {
+    expDate: {
       type: DataTypes.DATEONLY,
       // allowNull: false,
     },
@@ -24,6 +24,10 @@ Receipt.init(
     image: {
       type: DataTypes.STRING,
       // allowNull: false,
+    },
+    archive: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   },
   {

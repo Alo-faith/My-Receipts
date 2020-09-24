@@ -1,12 +1,14 @@
 const express = require("express");
 const upload = require("../middleware/multer");
 const passport = require("passport");
+
 const {
   folderList,
   folderUpdate,
   folderDelete,
   fetchFolder,
   receiptCreate,
+  folderCreate,
 } = require("../controllers/FolderController");
 
 const router = express.Router();
@@ -24,7 +26,12 @@ router.param("folderId", async (req, res, next, folderId) => {
 });
 
 router.get("/", folderList);
-
+// create Folder
+router.post(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  folderCreate
+);
 router.put(
   "/:folderId",
   passport.authenticate("jwt", { session: false }),
@@ -37,7 +44,7 @@ router.delete(
 );
 
 router.post(
-  "/:folderId/receipt",
+  "/:folderId/receipts",
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
   receiptCreate
