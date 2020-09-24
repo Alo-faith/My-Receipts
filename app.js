@@ -2,6 +2,7 @@ const express = require("express");
 
 // cors
 const cors = require("cors");
+const path = require("path");
 
 // body
 const bodyParser = require("body-parser");
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 passport.use(localStrategy);
 passport.use(jwtStrategy);
+app.use("/media", express.static(path.join(__dirname, "media")));
 
 app.use(userRoutes);
 app.use("/folders", folderRoutes);

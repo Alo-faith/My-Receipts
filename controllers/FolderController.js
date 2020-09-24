@@ -33,6 +33,7 @@ exports.folderList = async (req, res, next) => {
 exports.folderUpdate = async (req, res, next) => {
   try {
     console.log(".......req.body", req.body);
+
     if (req.user.id === req.folder.userId) {
       await req.folder.update(req.body);
       res.status(204).end();
