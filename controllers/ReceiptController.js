@@ -14,7 +14,7 @@ exports.fetchReceipt = async (receiptId, next) => {
 exports.receiptList = async (req, res, next) => {
   try {
     const receipt = await Receipt.findAll({
-      attributes: { exclude: ["folderId", "createdAt", "updatedAt"] },
+      attributes: { exclude: ["createdAt", "updatedAt"] },
       include: {
         model: Folder,
         as: "folder",
@@ -35,11 +35,6 @@ exports.receiptUpdate = async (req, res, next) => {
         "host"
       )}/media/${req.file.filename}`;
     }
-
-    //   if (req.file) {
-    //     req.body.image = ${req.protocol}}://${req.get("host")}/media/${
-    //       req.file.filename
-    //     };
 
     await req.receipt.update(req.body);
     res.status(204).end();

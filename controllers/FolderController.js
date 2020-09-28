@@ -67,9 +67,7 @@ exports.receiptCreate = async (req, res, next) => {
   try {
     const { folderId } = req.params;
     if (req.file) {
-      // req.body.image = `${req.protocol}:${req.get("host")}/media/${req.file.filename}`;
       req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
-      // }
     }
 
     req.body.folderId = folderId;
