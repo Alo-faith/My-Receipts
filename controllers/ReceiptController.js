@@ -13,8 +13,11 @@ exports.fetchReceipt = async (receiptId, next) => {
 
 exports.receiptList = async (req, res, next) => {
   try {
+
     const receipt = await Receipt.findAll({
+
       attributes: { exclude: ["createdAt", "updatedAt"] },
+
       include: {
         model: Folder,
         as: "folder",
