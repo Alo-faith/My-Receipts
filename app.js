@@ -50,7 +50,6 @@ const run = async () => {
     await db.sync({ alter: true });
   } catch (error) {
     console.error("Error connecting to the database: ", error);
-    console.error("hi: ");
   }
 
   const PORT = process.env.PORT || 8000;
