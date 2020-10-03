@@ -11,7 +11,7 @@ const {
   userUpdate,
   deleteUser,
   fetchUser,
-} = require("../controllers/userController");
+} = require("../controllers/UserController");
 
 router.param("userId", async (req, res, next, userId) => {
   const user = await fetchUser(userId, next);

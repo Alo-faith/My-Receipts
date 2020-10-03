@@ -47,6 +47,7 @@ exports.signup = async (req, res, next) => {
       userId: payload.id,
       name: "My Receipts",
       defaultFolder: true,
+      pin: false,
     });
 
     res.status(201).json({ token, defaultFolder });
