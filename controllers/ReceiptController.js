@@ -16,7 +16,7 @@ exports.receiptList = async (req, res, next) => {
 
     const receipt = await Receipt.findAll({
 
-      attributes: { exclude: ["createdAt", "updatedAt"] },
+      // attributes: { exclude: ["createdAt", "updatedAt"] },
 
       include: {
         model: Folder,
