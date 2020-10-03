@@ -45,7 +45,7 @@ exports.signup = async (req, res, next) => {
 
     const defaultFolder = await Folder.create({
       userId: payload.id,
-      name: "Your Receipts",
+      name: "My Receipts",
       defaultFolder: true,
     });
 
